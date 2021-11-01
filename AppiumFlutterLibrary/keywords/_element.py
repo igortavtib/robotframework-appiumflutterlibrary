@@ -24,6 +24,13 @@ class _ElementKeywords(KeywordGroup):
         element = FlutterElement(application, key_finder)
         element.send_keys(text)
 
+    def click_element(self, locator):
+        application = self._current_application()
+        finder = FlutterFinder()
+        key_finder = finder.by_value_key(locator)
+        element = FlutterElement(application, key_finder)
+        element.click()
+
 
     def _element_find(self, locator):
         application = self._current_application()
