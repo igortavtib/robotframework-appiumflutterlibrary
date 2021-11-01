@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import robot
-from appium import webdriver
 from AppiumFlutterLibrary.utils import ApplicationCache
 from AppiumFlutterLibrary.keywords.keywordgroup import KeywordGroup
 from appium.webdriver import Remote
-from appium_flutter_finder import FlutterElement, FlutterFinder
 
 class _ApplicationManagementKeyWords(KeywordGroup):
     def __init__(self):
