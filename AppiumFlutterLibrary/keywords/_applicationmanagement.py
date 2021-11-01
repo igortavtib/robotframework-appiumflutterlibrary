@@ -9,32 +9,17 @@ from appium_flutter_finder import FlutterElement, FlutterFinder
 
 class _ApplicationManagementKeyWords(KeywordGroup):
     def __init__(self):
-        self._cache = ApplicationCache
+        self._cache = ApplicationCache()
         self._timeout_in_secs = float(5)
 
-    def open_application(self, remote_url, alias=None, **kwargs):
+    def close_application(self):
+        self._cache.close()
+
+    def open_application(self, remote_url, alias =None, **kwargs):
         desired_caps = kwargs
-        application = Remote(str(remote_url), dict(desired_caps))
+        application = Remote(str(remote_url), desired_caps)
 
         return self._cache.register(application, alias)
-
-    def login_to_application(self, remote_url, alias=None, **kwargs):
-        driver = Remote('http://localhost:4723/wd/hub', dict(
-            platformName='android',
-            automationName='flutter',
-            udid='emulator-5554',
-            app='/home/igortavtib/Projects/robotframework-appiumflutterlibrary/app-prod-debug.apk'
-        ))
-
-        finder = FlutterFinder()
-
-        key_finder = finder.by_value_key('input-user')
-        input_element = FlutterElement(driver, key_finder)
-        key_finder = finder.by_value_key('input-password')
-        password_element = FlutterElement(driver, key_finder)
-        driver.execute_script('flutter:waitFor', input_element)
-        input_element.send_keys('igoraugsto@gmail.com')
-        password_element.send_keys('senha123')
 
     def set_appium_timeout(self, seconds):
         old_timeout = self.get_appium_timeout()
@@ -46,3 +31,10 @@ class _ApplicationManagementKeyWords(KeywordGroup):
 
         See `Set Appium Timeout` for an explanation."""
         return robot.utils.secs_to_timestr(self._timeout_in_secs)
+
+    # Private
+
+    def _current_application(self):
+        if not self._cache.current:
+            raise RuntimeError('No application is open')
+        return self._cache.current
