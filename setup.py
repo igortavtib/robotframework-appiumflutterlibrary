@@ -36,7 +36,8 @@ setup(name='robotframework-appiumflutterlibrary',
           'Appium-Python-Client >= 1.1.0',
           'selenium >= 2.47.1',
           'kitchen >= 1.2.4',
-          'six >= 1.10.0'
+          'six >= 1.10.0',
+          'Appium-Flutter-Finder >= 0.3.0'
       ],
       include_package_data=True,
       )

@@ -6,8 +6,10 @@ from AppiumFlutterLibrary.version import VERSION
 __version__ = VERSION
 
 class AppiumFlutterLibrary(
+	_ApplicationManagementKeyWords,
+	_ElementKeywords,
 	_RunOnFailureKeyWords,
-	_ApplicationManagementKeyWords
+	_WaintingKeywords
 ):
 	ROBOT_LIBRARY_SCOPE = 'GLOBAL'
 	ROBOT_LIBRARY_VERSION = VERSION

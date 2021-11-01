@@ -13,6 +13,6 @@ finder = FlutterFinder()
 
 key_finder = finder.by_value_key('input-user')
 input_element = FlutterElement(driver, key_finder)
-driver.execute('flutter::waitFor', input_element)
+driver.execute_script('flutter:waitFor', input_element)
 input_element.send_keys('Teste 123')
 

@@ -16,6 +16,5 @@ class _RunOnFailureKeyWords(KeywordGroup):
         new_keyword_text = new_keyword if new_keyword is not None else "Nothing"
 
         self._run_on_failure_keyword = new_keyword
-        self._info('%s will be run on failure.' % new_keyword_text)
 
         return old_keyword
