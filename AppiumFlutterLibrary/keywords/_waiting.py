@@ -9,7 +9,7 @@ class _WaintingKeywords(KeywordGroup):
 
     def wait_for_element(self, locator, timeout=None, error=None):
         application = self._current_application()
-        element = self._element_finder.find_by_key(application, locator)
+        element = self._element_finder.find(application, locator)
         application.execute_script('flutter:waitFor', element)
 
     def _format_timeout(self, timeout):

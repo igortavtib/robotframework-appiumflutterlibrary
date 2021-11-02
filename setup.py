@@ -5,11 +5,9 @@ from setuptools import setup
 
 ROOT = dirname(abspath(__file__))
 
-version_file = join(ROOT, 'AppiumFlutterLibrary', 'version.py')
-exec (compile(open(version_file).read(), version_file, 'exec'))
 
 setup(name='robotframework-appiumflutterlibrary',
-      version=VERSION,
+      version='1.0.0-alpha',
       description='Robot Framework Mobile flutter app testing library for Appium Client Android & iOS & Web',
       long_description=open(join(ROOT, 'README.md')).read(),
       author='Igor Augusto',
@@ -19,13 +17,13 @@ setup(name='robotframework-appiumflutterlibrary',
       keywords='robotframework flutter testing testautomation mobile appium webdriver app android ios',
       platforms='any',
       classifiers=[
-          "Development Status :: 5 - Production/Stable",
+          "Development Status :: 1 - Planning",
+          "Framework :: Robot Framework :: Library",
           "License :: OSI Approved :: Apache Software License",
           "Operating System :: OS Independent",
           "Programming Language :: Python",
           'Topic :: Software Development :: Quality Assurance',
           "Topic :: Software Development :: Testing",
-          'Programming Language :: Python',
           'Programming Language :: Python :: 3.7',
           'Programming Language :: Python :: 3.8',
       ],

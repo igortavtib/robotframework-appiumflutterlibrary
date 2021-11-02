@@ -8,5 +8,5 @@ class _ScreenKeywords(KeywordGroup):
 
     def scroll_to_element(self, locator):
         application = self._current_application()
-        element = self._element_finder.find_by_key(application, locator)
+        element = self._element_finder.find(application, locator)
         application.execute_script('flutter:scrollIntoView', element)

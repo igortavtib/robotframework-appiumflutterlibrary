@@ -9,7 +9,8 @@ class AppiumFlutterLibrary(
 	_ApplicationManagementKeyWords,
 	_ElementKeywords,
 	_RunOnFailureKeyWords,
-	_WaintingKeywords
+	_WaintingKeywords,
+	_LoggingKeywords
 ):
 	ROBOT_LIBRARY_SCOPE = 'GLOBAL'
 	ROBOT_LIBRARY_VERSION = VERSION
