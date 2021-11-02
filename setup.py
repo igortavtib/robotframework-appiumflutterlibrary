@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
 from os.path import abspath, dirname, join
-from setuptools import setup
+from setuptools import setup, find_packages
 
 ROOT = dirname(abspath(__file__))
 
 
 setup(name='robotframework-appiumflutterlibrary',
-      version='1.0.0-alpha',
+      version='1.0.0-alpha.1',
       description='Robot Framework Mobile flutter app testing library for Appium Client Android & iOS & Web',
       long_description=open(join(ROOT, 'README.md')).read(),
       author='Igor Augusto',
@@ -37,5 +37,6 @@ setup(name='robotframework-appiumflutterlibrary',
           'six >= 1.10.0',
           'Appium-Flutter-Finder >= 0.3.0'
       ],
+      packages=find_packages(exclude=["tests"]),
       include_package_data=True,
       )
