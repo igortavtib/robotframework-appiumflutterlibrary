@@ -1,5 +1,5 @@
 from .keywordgroup import KeywordGroup
-from AppiumFlutterLibrary.finder import ElementFinder, elementfinder
+from AppiumFlutterLibrary.finder import ElementFinder
 
 def isstr(s):
     return isinstance(s, str)
