@@ -30,7 +30,7 @@ jobs:
     - name: Build package
       run: python -m build
     - name: Publish package
-      uses: pypi-publish@v1.4.2
+      uses: pypa/pypi-publish@v1.4.2
       with:
         verbose: true
         password: ${{ secrets.PYPI_API_TOKEN }}
