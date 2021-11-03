@@ -1,4 +1,3 @@
-from _typeshed import ReadableBuffer
 from AppiumFlutterLibrary.finder import ElementFinder
 from AppiumFlutterLibrary.keywords.keywordgroup import KeywordGroup
 
@@ -9,4 +8,5 @@ class _ScreenKeywords(KeywordGroup):
     def scroll_to_element(self, locator):
         application = self._current_application()
         element = self._element_finder.find(application, locator)
-        application.execute_script('flutter:scrollIntoView', element)
+        self._info(element)
+        application.execute_script('flutter:scrollIntoView', element, 0)

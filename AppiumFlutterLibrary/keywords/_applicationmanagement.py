@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import robot
+import time
 from AppiumFlutterLibrary.utils import ApplicationCache
 from AppiumFlutterLibrary.keywords.keywordgroup import KeywordGroup
 from appium.webdriver import Remote
@@ -15,8 +16,9 @@ class _ApplicationManagementKeyWords(KeywordGroup):
 
     def open_application(self, remote_url, alias =None, **kwargs):
         desired_caps = kwargs
+        if desired_caps['automationName'] != 'flutter':
+            raise ValueError("Appium Flutter Library only suports flutter automation. Try changing automationName capability to 'flutter'")
         application = Remote(str(remote_url), desired_caps)
-
         return self._cache.register(application, alias)
 
     def set_appium_timeout(self, seconds):
