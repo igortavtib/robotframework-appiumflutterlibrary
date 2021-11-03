@@ -9,7 +9,7 @@ The project uses the [Flutter Driver](https://flutter.dev/docs/cookbook/testing/
 
 ## Installation
 
-Installing using [pip](https://pypi.org/project/robotframework-appiumflutterlibrary/)
+Install using [pip](https://pypi.org/project/robotframework-appiumflutterlibrary/)
 
 ```bash
 pip install --upgrade robotframework-appiumflutterlibrary
