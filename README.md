@@ -1,4 +1,4 @@
-# AppiumFlutterLibary
+# AppiumFlutterLibrary
 
 ![PyPI](https://img.shields.io/pypi/v/robotframework-appiumflutterlibrary?color=blue)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/robotframework-appiumflutterlibrary)
