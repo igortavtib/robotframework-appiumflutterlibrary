@@ -16,6 +16,8 @@ class _ApplicationManagementKeyWords(KeywordGroup):
 
     def open_application(self, remote_url, alias =None, **kwargs):
         desired_caps = kwargs
+        if desired_caps['automationName'] != 'flutter':
+            raise ValueError("Appium Flutter Library only suports flutter automation. Try changing automationName capability to 'flutter'")
         application = Remote(str(remote_url), desired_caps)
         return self._cache.register(application, alias)
 
