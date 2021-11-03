@@ -5,7 +5,8 @@ class ElementFinder():
         self._element_finder = FlutterFinder()
         self._strategies = {
             'xpath': self._find_by_xpath,
-            'key': self._find_by_key
+            'key': self._find_by_key,
+            'text': self._find_by_text,
         }
 
     def find(self, application, locator):
@@ -28,6 +29,14 @@ class ElementFinder():
         
     def _find_by_xpath(self, application, xpath):
         return
+
+    def _find_by_text(self, application, element_text):
+        finder_text = self._element_finder.by_text(element_text)
+        element = FlutterElement(application, finder_text)
+
+        return element
+
+    
 
     def _parse_locator(self, locator):
         prefix = None
