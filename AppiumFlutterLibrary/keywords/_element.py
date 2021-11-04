@@ -12,12 +12,26 @@ class _ElementKeywords(KeywordGroup):
     def input_text(self, locator, text):
         element = self._find_element(locator)
         self._info("Typing text '%s' into component '%s'" % (text, locator))
-        element.send_keys(text)
+        try:
+            element.send_keys(text)
+        except Exception as err:
+            raise err
+
+    def clear_text(self, locator):
+        element = self._find_element(locator)
+        self._info("Clearing text from element '%s'" % (locator))
+        try:
+            element.clear()
+        except Exception as err:
+            raise err
 
     def click_element(self, locator):
         element = self._find_element(locator)
         self._info("Clicking on element %s" % locator)
-        element.click()
+        try:
+            element.click()
+        except Exception as err:
+            raise err
 
     def element_should_be_visible(self, locator):
         element = self._find_element(locator)

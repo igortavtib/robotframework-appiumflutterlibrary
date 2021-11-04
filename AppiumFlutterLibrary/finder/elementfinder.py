@@ -36,8 +36,6 @@ class ElementFinder():
 
         return element
 
-    
-
     def _parse_locator(self, locator):
         prefix = None
         criteria = locator
