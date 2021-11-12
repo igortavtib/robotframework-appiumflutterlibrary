@@ -44,6 +44,13 @@ class _ElementKeywords(KeywordGroup):
             raise AssertionError("Element '%s' text should be '%s' but is '%s'." %
                                     (locator, text, element.text))
 
+    def get_element(self, locator):
+        return self._find_element(locator)
+
+    def get_element_text(self, locator):
+        element = self._find_element(locator)
+        return self._get_element_text(element)
+
     def _is_visible(self, element):
         application = self._current_application()
         application.execute_script('flutter:waitFor', element, 1)
@@ -52,3 +59,7 @@ class _ElementKeywords(KeywordGroup):
     def _find_element(self, locator):
         application = self._current_application()
         return self._element_finder.find(application, locator)
+
+    def _get_element_text(self, element):
+        application = self._current_application()
+        return application.execute_script('flutter:getText', element)
