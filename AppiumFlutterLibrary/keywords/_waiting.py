@@ -8,6 +8,11 @@ class _WaintingKeywords(KeywordGroup):
         self._element_finder = ElementFinder()
 
     def wait_for_element(self, locator, timeout=20):
+        """ Uses FlutterDriver.waitFor() to wait for an element by the
+        specified timeout duration.
+
+        By default the timeout is 20 seconds.
+        """
         application = self._current_application()
         element = self._element_finder.find(application, locator)
         if timeout == 0:
