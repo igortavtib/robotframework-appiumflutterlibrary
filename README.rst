@@ -9,9 +9,9 @@ AppiumFlutterLibrary
     :target: https://pypi.python.org/pypi/robotframework-appiumflutterlibrary/
     :alt: Number of PyPI downloads
 
-`AppiumFlutterLibrary`_ is a library for testing Flutter apps with `RobotFramework`_.
+`AppiumFlutterLibrary`_ is a library for testing Flutter apps with `Robot Framework`_.
 
-The project uses the `Flutter Driver`_ test tools integrated to `Appium`_ as a `RobotFramework`_ library.
+The project uses the `FlutterDriver`_ test tools integrated to `Appium`_ as a `Robot Framework`_ library.
 
 Installation
 ------------
