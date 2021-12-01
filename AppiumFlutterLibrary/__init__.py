@@ -40,6 +40,9 @@ class AppiumFlutterLibrary(
 	| *Locator*    | *Description*              |
 	| key(default) | FlutterDriver element key. |
 	| text         | Element text.              |
+	| semantics    | Element semantics label    |
+    | tooltip      | Element tooltip message    |
+	| type         | Element type               |
 	"""
 	ROBOT_LIBRARY_SCOPE = 'GLOBAL'
 	ROBOT_LIBRARY_VERSION = VERSION

@@ -69,12 +69,28 @@ class _ElementKeywords(KeywordGroup):
             raise AssertionError("Element '%s' text should be '%s' but is '%s'." %
                                     (locator, text, element.text))
 
+    def element_text_should_not_be(self, locator, text):
+        """Verify if the element text is not equal to provided text.
+
+        If the text isn't equal raise an Assertion Error.
+
+        If the element does not support getText() raise an error.
+        """
+        element = self._find_element(locator)
+        if element.text == text:
+            raise AssertionError("Element '%s' text should not be '%s' but is." %
+                                    (locator, text))
+
     def get_element(self, locator):
         """Returns the element object.
         """
         return self._find_element(locator)
 
     def get_element_text(self, locator):
+        """Returns element text
+
+        If the element does not support getText() raise an error.
+        """
         element = self._find_element(locator)
         return self._get_element_text(element)
 

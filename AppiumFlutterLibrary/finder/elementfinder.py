@@ -7,6 +7,9 @@ class ElementFinder():
             'xpath': self._find_by_xpath,
             'key': self._find_by_key,
             'text': self._find_by_text,
+            'semantics': self._find_by_semantics_label,
+            'tooltip': self._find_by_tooltip_message,
+            'type': self._find_by_type,
         }
 
     def find(self, application, locator):
@@ -33,6 +36,24 @@ class ElementFinder():
     def _find_by_text(self, application, element_text):
         finder_text = self._element_finder.by_text(element_text)
         element = FlutterElement(application, finder_text)
+
+        return element
+
+    def _find_by_semantics_label(self, application, semantics):
+        finder_semantics_label = self._element_finder.by_semantics_label(semantics)
+        element = FlutterElement(application, finder_semantics_label)
+
+        return element
+
+    def _find_by_tooltip_message(self, application, tooltip):
+        finder_tooltip_message = self._element_finder.by_tooltip(tooltip)
+        element = FlutterElement(application, finder_tooltip_message)
+
+        return element
+
+    def _find_by_type(self, application, type):
+        finder_type = self._element_finder.by_type(type)
+        element = FlutterElement(application, finder_type)
 
         return element
 
