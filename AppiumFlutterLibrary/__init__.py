@@ -8,6 +8,7 @@ __version__ = VERSION
 class AppiumFlutterLibrary(
 	_ApplicationManagementKeyWords,
 	_ElementKeywords,
+	_KeyeventsKeywords,
 	_LoggingKeywords,
 	_ScreenKeywords,
 	_RunOnFailureKeyWords,

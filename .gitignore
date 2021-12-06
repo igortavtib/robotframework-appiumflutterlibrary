@@ -30,8 +30,9 @@ nosetests.xml
 # Translations
 *.mo
 
-# PyCharm
+# IDE
 .idea
+.vscode
 
 # Mr Developer
 .mr.developer.cfg
@@ -45,6 +46,7 @@ report.html
 demo/test_doubandaily.txt
 htmlcov/
 run.sh
+
 # for eclipse
 .settings
 .eggs/
