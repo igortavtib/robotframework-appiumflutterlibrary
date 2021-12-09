@@ -8,9 +8,11 @@ __version__ = VERSION
 class AppiumFlutterLibrary(
 	_ApplicationManagementKeyWords,
 	_ElementKeywords,
+	_KeyeventsKeywords,
 	_LoggingKeywords,
 	_ScreenKeywords,
 	_RunOnFailureKeyWords,
+	_TouchKeywords,
 	_WaintingKeywords,
 ):
 	""" AppiumFlutterLibrary is a flutter testing library for Robot Framework
