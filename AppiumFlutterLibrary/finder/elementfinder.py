@@ -10,6 +10,7 @@ class ElementFinder():
             'semantics': self._find_by_semantics_label,
             'tooltip': self._find_by_tooltip_message,
             'type': self._find_by_type,
+            'default': self._find_by_key,
         }
 
     def find(self, application, locator):
