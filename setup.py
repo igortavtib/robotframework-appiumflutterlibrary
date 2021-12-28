@@ -11,7 +11,7 @@ exec (compile(open(version_file).read(), version_file, 'exec'))
 setup(name='robotframework-appiumflutterlibrary',
       version=VERSION,
       description='Robot Framework Mobile flutter app testing library for Appium Client Android & iOS & Web',
-      long_description=open(join(ROOT, 'README.md')).read(),
+      long_description=open(join(ROOT, 'README.rst')).read(),
       author='Igor Augusto',
       author_email='igortavtib@gmail.com',
       url='https://github.com/igortavtib/robotframework-appiumflutterlibrary',
