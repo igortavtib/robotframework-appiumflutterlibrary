@@ -5,8 +5,11 @@ from setuptools import setup, find_packages
 
 ROOT = dirname(abspath(__file__))
 
+version_file = join(ROOT, 'AppiumFlutterLibrary', 'version.py')
+exec (compile(open(version_file).read(), version_file, 'exec'))
+
 setup(name='robotframework-appiumflutterlibrary',
-      version='1.0.0-beta',
+      version=VERSION,
       description='Robot Framework Mobile flutter app testing library for Appium Client Android & iOS & Web',
       long_description=open(join(ROOT, 'README.md')).read(),
       author='Igor Augusto',
