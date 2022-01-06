@@ -91,8 +91,9 @@ class _ElementKeywords(KeywordGroup):
 
         If the element does not support getText() raise an error.
         """
-        element = self._find_element(locator)
-        return self._get_element_text(element)
+        text = self._get_text(locator)
+        self._info("Element '%s' text is '%s' " % (locator, text))
+        return text
 
     def _is_visible(self, element):
         application = self._current_application()
@@ -103,6 +104,9 @@ class _ElementKeywords(KeywordGroup):
         application = self._current_application()
         return self._element_finder.find(application, locator)
 
-    def _get_element_text(self, element):
-        application = self._current_application()
-        return application.execute_script('flutter:getText', element)
+    def _get_text(self, locator):
+        element = self._find_element(locator)
+        if element is not None:
+            return element.text
+        return None
+    
