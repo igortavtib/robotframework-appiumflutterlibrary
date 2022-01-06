@@ -115,6 +115,16 @@ class _ApplicationManagementKeyWords(KeywordGroup):
         See `Set Appium Timeout` for an explanation."""
         return robot.utils.secs_to_timestr(self._timeout_in_secs)
 
+    def get_render_tree(self):
+        """
+        Gets the string representation of the render tree.
+
+        Example:
+        | ${tree} = | Get Render Tree |
+        | Log | ${tree} |
+        """
+        return self._current_application().execute_script('flutter: getRenderTree')
+
     # Private
 
     def _current_application(self):
