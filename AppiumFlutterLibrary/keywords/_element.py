@@ -97,7 +97,7 @@ class _ElementKeywords(KeywordGroup):
 
     def _is_visible(self, element):
         application = self._current_application()
-        application.execute_script('flutter:waitFor', element, 1)
+        application.execute_script('flutter:waitFor', element.id, 1)
         return 1
 
     def _find_element(self, locator):

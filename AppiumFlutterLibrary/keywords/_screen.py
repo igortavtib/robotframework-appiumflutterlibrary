@@ -11,4 +11,4 @@ class _ScreenKeywords(KeywordGroup):
         application = self._current_application()
         element = self._element_finder.find(application, locator)
         self._info(element)
-        application.execute_script('flutter:scrollIntoView', element, 0)
+        application.execute_script('flutter:scrollIntoView', element.id, 0)
