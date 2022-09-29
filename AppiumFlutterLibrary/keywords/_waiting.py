@@ -21,7 +21,7 @@ class _WaintingKeywords(KeywordGroup):
             if timeout is None:
                 application.execute_script('flutter:waitFor', element.id)
             else:
-                application.execute_script('flutter:waitFor', element.id, timeout)
+                application.execute_script('flutter:waitFor', element.id, timeout*1000)
         except Exception:
             raise AssertionError("Could not find element '%s' in %s seconds" % (locator, timeout))
     
@@ -39,7 +39,7 @@ class _WaintingKeywords(KeywordGroup):
             if timeout is None:
                 application.execute_script('flutter:waitForAbsent', element.id)
             else:
-                application.execute_script('flutter:waitForAbsent', element.id, timeout)
+                application.execute_script('flutter:waitForAbsent', element.id, timeout*1000)
         except Exception:
             raise AssertionError("Element '%s' still not absent in %s seconds" % (locator, timeout))
     
