@@ -80,20 +80,46 @@ class ElementFinder():
 
         return element
 
-    def _get_descendant(self, application, of, matching) -> FlutterElement:
+    def _get_descendant(
+        self, 
+        application, 
+        of: str, 
+        matching: str,
+        match_root: bool = False,
+        first_match_only: bool = False,
+        ) -> FlutterElement:
         finder_descendant = self._element_finder.by_descendant(
-            self.find(application, of, serialized=True), 
-            self.find(application, matching, serialized=True)
+            self.find(
+                application, of, serialized=True,
+                match_root=match_root, first_match_only=first_match_only
+                ), 
+            self.find(
+                application, matching, serialized=True,
+                match_root=match_root, first_match_only=first_match_only
+                )
             )
 
         element = FlutterElement(application, finder_descendant)
 
         return element
 
-    def _get_ancestor(self, application, of, matching) -> FlutterElement:
+    def _get_ancestor(
+        self, 
+        application, 
+        of: str, 
+        matching: str,
+        match_root: bool = False,
+        first_match_only: bool = False,
+        ) -> FlutterElement:
         finder_descendant = self._element_finder.by_ancestor(
-            self.find(application, of, serialized=True), 
-            self.find(application, matching, serialized=True)
+            self.find(
+                application, of, serialized=True,
+                match_root=match_root, first_match_only=first_match_only
+                ), 
+            self.find(
+                application, matching, serialized=True,
+                match_root=match_root, first_match_only=first_match_only
+                )
             )
 
         element = FlutterElement(application, finder_descendant)

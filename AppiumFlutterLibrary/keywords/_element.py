@@ -113,7 +113,13 @@ class _ElementKeywords(KeywordGroup):
         self._info("Element '%s' text is '%s' " % (locator, text))
         return text
 
-    def get_element_descendant(self, of: str, matching: str) -> FlutterElement:
+    def get_element_descendant(
+        self, 
+        of: str, 
+        matching: str,
+        match_root: bool = False,
+        first_match_only: bool = False,
+        ) -> FlutterElement:
         """Returns the element's descendant
         
         Params:
@@ -121,17 +127,27 @@ class _ElementKeywords(KeywordGroup):
             matching: locator for the child element
         """
         application = self._current_application()
-        return self._element_finder._get_descendant(application, of, matching)
+        return self._element_finder._get_descendant(
+            application, of, matching, match_root, first_match_only
+            )
 
-    def get_element_ancestor(self, of: str, matching: str) -> FlutterElement:
+    def get_element_ancestor(
+        self, 
+        of: str, 
+        matching: str,
+        match_root: bool = False,
+        first_match_only: bool = False,
+        ) -> FlutterElement:
         """Returns the element's ancestor
         
         Params:
             of: locator for the parent element
             matching: locator for the child element
         """
-        applicaiton = self.current_application()
-        return self._element_finder._get_ancestor(applicaiton, of, matching)
+        application = self.current_application()
+        return self._element_finder._get_ancestor(
+            application, of, matching, match_root, first_match_only
+            )
 
     def _is_visible(self, element):
         application = self._current_application()
