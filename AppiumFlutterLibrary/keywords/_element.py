@@ -1,6 +1,8 @@
 from appium.webdriver.webelement import WebElement
 from .keywordgroup import KeywordGroup
 from AppiumFlutterLibrary.finder import ElementFinder
+from appium_flutter_finder import FlutterElement
+from typing import Optional
 
 def isstr(s):
     return isinstance(s, str)
@@ -35,48 +37,64 @@ class _ElementKeywords(KeywordGroup):
         except Exception as err:
             raise err
 
-    def click_element(self, locator):
+    def click_element(self, locator: str | FlutterElement) -> None:
         """Tap the specified element.
 
         If the element does not support tapping an error
         will be raised.
         """
-        element = self._find_element(locator)
+        if isinstance(locator, FlutterElement):
+            element = locator
+        else:
+            element = self._find_element(locator)
+
         self._info("Clicking on element %s" % locator)
         try:
             element.click()
         except Exception as err:
             raise err
 
-    def element_should_be_visible(self, locator):
+    def element_should_be_visible(self, locator: str | FlutterElement):
         """Verify if the element is visible using FlutterDriver.waitFor().
 
         If the element isn't visible raise an Assertion Error.
         """
-        element = self._find_element(locator)
+        if isinstance(locator, FlutterElement):
+            element = locator
+        else:
+            element = self._find_element(locator)
+        
         if not self._is_visible(element):
             raise AssertionError("Element '%s' should be visible but not" % locator)
 
-    def element_text_should_be(self, locator, text):
+    def element_text_should_be(self, locator: str | FlutterElement, text):
         """Verify if the element text is equal to provided text.
 
         If the text isn't equal raise an Assertion Error.
 
         If the element does not support getText() raise an error.
         """
-        element = self._find_element(locator)
+        if isinstance(locator, FlutterElement):
+            element = locator
+        else:
+            element = self._find_element(locator)
+
         if element.text != text:
             raise AssertionError("Element '%s' text should be '%s' but is '%s'." %
                                     (locator, text, element.text))
 
-    def element_text_should_not_be(self, locator, text):
+    def element_text_should_not_be(self, locator: str | FlutterElement, text):
         """Verify if the element text is not equal to provided text.
 
         If the text isn't equal raise an Assertion Error.
 
         If the element does not support getText() raise an error.
         """
-        element = self._find_element(locator)
+        if isinstance(locator, FlutterElement):
+            element = locator
+        else:
+            element = self._find_element(locator)
+
         if element.text == text:
             raise AssertionError("Element '%s' text should not be '%s' but is." %
                                     (locator, text))
@@ -86,7 +104,7 @@ class _ElementKeywords(KeywordGroup):
         """
         return self._find_element(locator)
 
-    def get_element_text(self, locator):
+    def get_element_text(self, locator: str | FlutterElement):
         """Returns element text
 
         If the element does not support getText() raise an error.
@@ -94,6 +112,26 @@ class _ElementKeywords(KeywordGroup):
         text = self._get_text(locator)
         self._info("Element '%s' text is '%s' " % (locator, text))
         return text
+
+    def get_element_descendant(self, of: str, matching: str) -> FlutterElement:
+        """Returns the element's descendant
+        
+        Params:
+            of: locator for the parent element
+            matching: locator for the child element
+        """
+        application = self._current_application()
+        return self._element_finder._get_descendant(application, of, matching)
+
+    def get_element_ancestor(self, of: str, matching: str) -> FlutterElement:
+        """Returns the element's ancestor
+        
+        Params:
+            of: locator for the parent element
+            matching: locator for the child element
+        """
+        applicaiton = self.current_application()
+        return self._element_finder._get_ancestor(applicaiton, of, matching)
 
     def _is_visible(self, element):
         application = self._current_application()
@@ -104,8 +142,12 @@ class _ElementKeywords(KeywordGroup):
         application = self._current_application()
         return self._element_finder.find(application, locator)
 
-    def _get_text(self, locator):
-        element = self._find_element(locator)
+    def _get_text(self, locator: str | FlutterElement) -> Optional[str]:
+        if isinstance(locator, FlutterElement):
+            element = locator
+        else:
+            element = self._find_element(locator)
+
         if element is not None:
             return element.text
         return None
