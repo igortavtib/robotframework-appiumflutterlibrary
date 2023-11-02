@@ -4,6 +4,7 @@ import robot
 from AppiumFlutterLibrary.utils import ApplicationCache
 from AppiumFlutterLibrary.keywords.keywordgroup import KeywordGroup
 from appium.webdriver import Remote
+from appium.options.common.base import AppiumOptions
 
 class _ApplicationManagementKeyWords(KeywordGroup):
     def __init__(self):
@@ -30,7 +31,7 @@ class _ApplicationManagementKeyWords(KeywordGroup):
         if desired_caps['automationName'] != 'flutter':
             raise ValueError("Appium Flutter Library only suports flutter automation. Try changing automationName capability to 'flutter'")
         self._debug("Opening application")
-        application = Remote(str(remote_url), desired_caps)
+        application = Remote(str(remote_url), options=AppiumOptions().load_capabilities(desired_caps))
         return self._cache.register(application, alias)
 
     def reset_application(self):
